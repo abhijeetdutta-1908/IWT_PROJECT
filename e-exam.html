@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Exam Portal</title>
+    <link rel="stylesheet" href="e-exam.css">
+</head>
+<body>
+
+    <div class="exam-container">
+        <header class="exam-header">
+            <div class="timer">
+                <span>Time Left: <span id="time">00:25:50</span></span>
+            </div>
+            <div class="exam-info">
+                <span>Total Time: 90 Minutes</span>
+                <span>Total Marks: 90</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            
+            <main class="question-area">
+                <h3>Question No. 1</h3>
+                <p class="question-text">
+                    In the context of web development, which of the following is primarily responsible for the styling and layout of web pages?
+                </p>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="opt1" name="q5_option">
+                        <label for="opt1">A. HTML (HyperText Markup Language)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="opt2" name="q5_option">
+                        <label for="opt2">B. CSS (Cascading Style Sheets)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="opt3" name="q5_option">
+                        <label for="opt3">C. JavaScript</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="opt4" name="q5_option">
+                        <label for="opt4">D. Python</label>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-save">Save & Next</button>
+                    <button class="btn btn-review">Mark for Review & Next</button>
+                    <button class="btn btn-clear">Clear Response</button>
+                </div>
+            </main>
+
+            <aside class="side-panel">
+                <div class="profile-card">
+                    <img src="./Dola.png" alt="Candidate Photo">
+                    <h4>Dolamani Meher</h4>
+                </div>
+
+                <div class="question-palette">
+                    <h4>Question Palette</h4>
+                    <div class="palette-grid">
+                        <div class="q-num current">1</div>
+                        <div class="q-num saved">2</div>
+                        <div class="q-num review">3</div>
+                        <div class="q-num not-answered">4</div>
+                        <div class="q-num saved">5</div>
+                        <div class="q-num not-visited">6</div>
+                        <div class="q-num not-visited">7</div>
+                        <div class="q-num saved">8</div>
+                        <div class="q-num not-visited">9</div>
+                        <div class="q-num not-visited">10</div>
+                        <div class="q-num not-visited">11</div>
+                        <div class="q-num not-visited">12</div>
+                        <div class="q-num saved">13</div>
+                        <div class="q-num review">14</div>
+                        <div class="q-num not-visited">15</div>
+                        <div class="q-num not-visited">16</div>
+                        <div class="q-num not-visited">17</div>
+                        <div class="q-num not-visited">18</div>
+                        <div class="q-num not-visited">19</div>
+                        <div class="q-num not-visited">20</div>
+                        <div class="q-num not-visited">21</div>
+                        <div class="q-num not-visited">22</div>
+                        <div class="q-num not-visited">23</div>
+                        <div class="q-num not-visited">24</div>
+                        <div class="q-num not-visited">25</div>
+                        <div class="q-num not-visited">26</div>
+                        <div class="q-num not-visited">27</div>
+                        <div class="q-num not-visited">28</div>
+                        <div class="q-num not-visited">29</div>
+                        <div class="q-num not-visited">30</div>
+                    </div>
+                </div>
+
+                <div class="palette-legend">
+                    <h4>Legend</h4>
+                    <ul>
+                        <li><span class="color-box saved"></span> Saved</li>
+                        <li><span class="color-box review"></span> Marked for Review</li>
+                        <li><span class="color-box not-answered"></span> Not Answered</li>
+                        <li><span class="color-box not-visited"></span> Not Visited</li>
+                        <li><span class="color-box current"></span> Current</li>
+                    </ul>
+                </div>
+                <button class="btn btn-submit">Submit Exam</button>
+            </aside>
+        </div>
+    </div>
+
+</body>
+</html>
