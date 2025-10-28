@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="register.css">
+
+    <style>
+        /* This is an example of document-wide CSS. */
+        /* It uses an ID selector to target the submit button. */
+        #submit-btn {
+            background-color: #28a745; /* Green color for submit */
+        }
+        #submit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <form>
+            <h2 id="form-title">Create an Account</h2>
+
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="student-id">ID</label>
+                <input type="text" id="student-id" name="student-id" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">E-Mail ID</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="input-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="address">College Address</label>
+                <textarea id="address" name="address" rows="4"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="branch">Branch</label>
+                <select id="branch" name="branch">
+                    <option value="" disabled selected>Select your branch</option>
+                    <option value="cse">Computer Science & Engineering</option>
+                    <option value="ece">Electronics & Communication</option>
+                    <option value="mech">Mechanical Engineering</option>
+                    <option value="civil">Civil Engineering</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Technical Skills</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="c" name="skills" value="c">
+                    <label for="c">C</label>
+                    <input type="checkbox" id="java" name="skills" value="java">
+                    <label for="java">Java</label>
+                    <input type="checkbox" id="python" name="skills" value="python">
+                    <label for="python">Python</label>
+                    <input type="checkbox" id="jsp" name="skills" value="jsp">
+                    <label for="jsp">JSP</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="resume" style="color: #0056b3;">Resume Upload</label>
+                <input type="file" id="resume" name="resume">
+            </div>
+            
+            <div class="input-group">
+                <label for="photo">Photo Upload</label>
+                <input type="file" id="photo" name="photo">
+            </div>
+
+            <div class="button-group">
+                <button type="submit" id="submit-btn">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
