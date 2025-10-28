@@ -1,109 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" href="register.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ScholarsGate - Academic Resource Hub</title>
     <style>
-        /* This is an example of document-wide CSS. */
-        /* It uses an ID selector to target the submit button. */
-        #submit-btn {
-            background-color: #28a745; /* Green color for submit */
+        /* Clear blue background with white content boxes for strong contrast */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root{
+            --bg-1: #0b4fd6;      /* deep blue background */
+            --bg-2: #0d68ff;      /* lighter blue gradient */
+            --card: #ffffff;      /* white boxes */
+            --text-dark: #0b1b2b; /* dark text for readability */
+            --muted: #5d6b78;     /* secondary text */
+            --accent: #1f3b5e;    /* brand deep blue accent */
+            --accent-2: #2b6be6;  /* button blue */
+            --container-max:1200px;
         }
-        #submit-btn:hover {
-            background-color: #218838;
+
+        *{box-sizing:border-box}
+        html,body{
+            height:100%;
+            margin:0;padding:0;
+            font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+            background: linear-gradient(180deg,var(--bg-1), var(--bg-2));
+            color:var(--text-dark);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.5;
+            padding:40px 0;
         }
+
+        .container{
+            width:90%;
+            max-width:var(--container-max);
+            margin:0 auto;
+        }
+
+        /* Header */
+        header.app-header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:16px;
+            margin-bottom:22px;
+        }
+
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:14px;
+        }
+
+        .logo-badge{
+            width:56px;height:56px;border-radius:12px;
+            background:var(--card);
+            display:flex;align-items:center;justify-content:center;
+            box-shadow: 0 8px 20px rgba(11,18,32,0.12);
+            font-weight:800;color:var(--accent);font-size:20px;
+            border:1px solid rgba(11,18,32,0.06);
+        }
+
+        .brand h1{
+            font-size:1.25rem;margin:0;color:var(--card);
+            color:var(--card);
+            background:transparent;
+            padding:0;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: #fff;
+            letter-spacing:0.4px;
+            font-weight:700;
+        }
+        .brand p{margin:0;font-size:0.85rem;color:rgba(255,255,255,0.9)}
+
+        /* Header actions (search + auth) */
+        .header-actions{
+            display:flex;gap:12px;align-items:center;
+        }
+
+        .search {
+            display:flex;align-items:center;background:rgba(255,255,255,0.95);
+            padding:8px;border-radius:12px;border:1px solid rgba(11,18,32,0.06);
+            box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+        }
+        .search input{
+            background:transparent;border:0;color:var(--text-dark);outline:none;width:260px;
+            font-size:0.95rem;padding:6px 8px;
+        }
+        .btn{
+            background:linear-gradient(90deg,var(--accent-2), #4ea1ff);
+            color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:600;
+            box-shadow:0 8px 20px rgba(43,107,230,0.18);cursor:pointer;
+        }
+        .ghost{
+            background:transparent;border:1px solid rgba(255,255,255,0.18);color:white;
+            padding:8px 12px;border-radius:10px;
+        }
+
+        /* Main white content card (hero) */
+        .hero{
+            margin-top:6px;padding:30px;border-radius:14px;
+            background:var(--card);
+            color:var(--text-dark);
+            box-shadow: 0 14px 40px rgba(2,6,23,0.18);
+            display:flex;gap:28px;align-items:center;
+        }
+
+        .hero-left{flex:1;min-width:260px}
+        .hero-right{flex:1;display:flex;justify-content:center;align-items:center;min-width:260px}
+
+        .hero-eyebrow{color:var(--accent);font-weight:700;font-size:0.85rem;margin-bottom:8px}
+        .hero-title{font-size:2rem;margin:0 0 12px 0;color:var(--text-dark);line-height:1.05}
+        .hero-sub{color:var(--muted);margin:0 0 16px 0;font-size:1rem}
+
+        .hero-cta{display:flex;gap:12px}
+        .hero-cta .btn.secondary{
+            background:transparent;color:var(--accent);border:1px solid rgba(31,59,94,0.12);box-shadow:none;
+        }
+
+        .stat-row{display:flex;gap:14px;margin-top:18px}
+        .stat{background:#f7f9fb;padding:10px 14px;border-radius:10px;border:1px solid rgba(11,18,32,0.04);min-width:110px}
+        .stat b{display:block;font-size:1.05rem;color:var(--text-dark)}
+        .stat span{font-size:0.85rem;color:var(--muted)}
+
+        .hero-image{
+            width:100%;max-width:420px;border-radius:10px;box-shadow:0 14px 30px rgba(11,18,32,0.08);
+            border:1px solid rgba(11,18,32,0.04);object-fit:cover;
+        }
+
+        /* Services grid - white cards */
+        .services{
+            margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+        }
+        .service-card{
+            padding:18px;border-radius:12px;background:var(--card);
+            border:1px solid rgba(11,18,32,0.06);
+            box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+            transition: transform .22s ease, box-shadow .22s ease;
+            display:flex;flex-direction:column;gap:10px;align-items:flex-start;
+            color:var(--text-dark);
+        }
+        .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 46px rgba(2,6,23,0.12)}
+        .svc-icon{
+            width:54px;height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,#eaf2ff,#d7e9ff);
+            font-size:22px;color:var(--accent);
+            border:1px solid rgba(11,18,32,0.04);
+        }
+        .svc-title{font-weight:700;color:var(--text-dark);margin:0;font-size:1rem}
+        .svc-desc{color:var(--muted);font-size:0.92rem;margin:0}
+
+        /* Footer */
+        footer.site-footer{
+            margin-top:26px;padding:14px;border-radius:10px;background:transparent;color:rgba(255,255,255,0.95);
+            display:flex;justify-content:space-between;align-items:center;gap:12px;
+        }
+        footer a{color:rgba(255,255,255,0.9);text-decoration:none}
+
+        /* Responsive */
+        @media (max-width:1000px){
+            .services{grid-template-columns:repeat(2,1fr)}
+            .hero{flex-direction:column;align-items:flex-start}
+            .hero-right{text-align:center}
+        }
+        @media (max-width:640px){
+            .brand h1{font-size:1rem}
+            .search input{width:120px}
+            .services{grid-template-columns:1fr}
+            .header-actions{flex-direction:column;align-items:flex-end}
+            .hero{padding:18px}
+        }
+
+        /* small animations */
+        .fade-in {animation:fadeIn .45s ease both}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none}}
     </style>
 </head>
 <body>
-    <div class="registration-container">
-        <form>
-            <h2 id="form-title">Create an Account</h2>
-
-            <div class="input-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="input-group">
-                <label for="student-id">ID</label>
-                <input type="text" id="student-id" name="student-id" required>
-            </div>
-
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div class="input-group">
-                <label for="email">E-Mail ID</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="input-group">
-                <label for="age">Age</label>
-                <input type="number" id="age" name="age" required>
-            </div>
-
-            <div class="input-group">
-                <label>Gender</label>
-                <div class="radio-group">
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label>
-                    <input type="radio" id="other" name="gender" value="other">
-                    <label for="other">Other</label>
+    <div class="container">
+        <header class="app-header fade-in">
+            <div class="brand">
+                <div class="logo-badge">SG</div>
+                <div>
+                    <h1>ScholarsGate</h1>
+                    <p>Academic Resource Hub</p>
                 </div>
             </div>
 
-            <div class="input-group">
-                <label for="address">College Address</label>
-                <textarea id="address" name="address" rows="4"></textarea>
-            </div>
+            <div class="header-actions">
+                <div class="search" role="search" aria-label="Search resources">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:.7;margin-left:6px">
+                        <path d="M21 21l-4.35-4.35" stroke="#203040" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="11" cy="11" r="6" stroke="#203040" stroke-width="2"/>
+                    </svg>
+                    <input type="text" placeholder="Search courses, papers, forums..." />
+                </div>
 
-            <div class="input-group">
-                <label for="branch">Branch</label>
-                <select id="branch" name="branch">
-                    <option value="" disabled selected>Select your branch</option>
-                    <option value="cse">Computer Science & Engineering</option>
-                    <option value="ece">Electronics & Communication</option>
-                    <option value="mech">Mechanical Engineering</option>
-                    <option value="civil">Civil Engineering</option>
-                </select>
+                <button class="ghost" title="Notifications">🔔</button>
+                <button class="btn" onclick="location.href='login.html'">Sign in</button>
             </div>
+        </header>
 
-            <div class="input-group">
-                <label>Technical Skills</label>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="c" name="skills" value="c">
-                    <label for="c">C</label>
-                    <input type="checkbox" id="java" name="skills" value="java">
-                    <label for="java">Java</label>
-                    <input type="checkbox" id="python" name="skills" value="python">
-                    <label for="python">Python</label>
-                    <input type="checkbox" id="jsp" name="skills" value="jsp">
-                    <label for="jsp">JSP</label>
+        <!-- HERO -->
+        <section class="hero fade-in" aria-labelledby="hero-title">
+            <div class="hero-left">
+                <div class="hero-eyebrow">Trusted by students & educators</div>
+                <h2 id="hero-title" class="hero-title">Your gateway to academic excellence — tools, community, and content in one place</h2>
+                <p class="hero-sub">From timed e-Exams and collaborative Openforum discussions to an always-available e-Repository and personalized MyWall — ScholarsGate gives you the infrastructure to learn, share and succeed.</p>
+
+                <div class="hero-cta">
+                    <button class="btn" onclick="location.href='e-exam.html'">Try an e-Exam</button>
+                    <button class="btn secondary" onclick="location.href='openforum.html'">Explore Openforum</button>
+                </div>
+
+                <div class="stat-row" aria-hidden="true">
+                    <div class="stat"><b>120k+</b><span>Resources</span></div>
+                    <div class="stat"><b>25k+</b><span>Active learners</span></div>
+                    <div class="stat"><b>4.9</b><span>Average rating</span></div>
                 </div>
             </div>
 
-            <div class="input-group">
-                <label for="resume" style="color: #0056b3;">Resume Upload</label>
-                <input type="file" id="resume" name="resume">
+            <div class="hero-right">
+                <img class="hero-image" alt="Students collaborating on resources"
+                    src="https://placehold.co/720x480/ffffff/0b4fd6?text=ScholarsGate+Platform" />
             </div>
-            
-            <div class="input-group">
-                <label for="photo">Photo Upload</label>
-                <input type="file" id="photo" name="photo">
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services fade-in" aria-label="Core services">
+            <div class="service-card">
+                <div class="svc-icon">📝</div>
+                <h3 class="svc-title">e-Exam</h3>
+                <p class="svc-desc">Simulate official tests with timed sections, analytics and progress tracking.</p>
+                <a href="e-exam.html" class="ghost" style="margin-top:10px;text-decoration:none;color:#203040;background:transparent;border:1px solid rgba(11,18,32,0.06);">Open e-Exam →</a>
             </div>
 
-            <div class="button-group">
-                <button type="submit" id="submit-btn">Submit</button>
-                <button type="reset">Reset</button>
+            <div class="service-card">
+                <div class="svc-icon">💬</div>
+                <h3 class="svc-title">Openforum</h3>
+                <p class="svc-desc">Ask questions, run study groups and collaborate with peers and faculty.</p>
+                <a href="openforum.html" class="ghost" style="margin-top:10px;text-decoration:none;color:#203040;background:transparent;border:1px solid rgba(11,18,32,0.06);">Visit Openforum →</a>
             </div>
-        </form>
+
+            <div class="service-card">
+                <div class="svc-icon">📚</div>
+                <h3 class="svc-title">e-Repository</h3>
+                <p class="svc-desc">Search verified lecture notes, research and past papers anytime.</p>
+                <a href="e-repository.html" class="ghost" style="margin-top:10px;text-decoration:none;color:#203040;background:transparent;border:1px solid rgba(11,18,32,0.06);">Browse Repository →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="svc-icon">📌</div>
+                <h3 class="svc-title">MyWall</h3>
+                <p class="svc-desc">Personal dashboard to organize tasks, deadlines and your recent activity.</p>
+                <a href="mywall.html" class="ghost" style="margin-top:10px;text-decoration:none;color:#203040;background:transparent;border:1px solid rgba(11,18,32,0.06);">Open MyWall →</a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div style="color:rgba(255,255,255,0.95)">&copy; 2025 ScholarsGate. All rights reserved.</div>
+            <div>
+                <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+                <a href="terms.html">Terms</a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

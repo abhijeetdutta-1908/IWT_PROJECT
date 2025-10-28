@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScholarsGate — Openforum (UI)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+    :root{
+      --bg-1:#0b4fd6;
+      --bg-2:#0d68ff;
+      --card:#ffffff;
+      --muted:#616f7f;
+      --accent:#1f3b5e;
+      --accent-2:#2b6be6;
+      --glass: rgba(255,255,255,0.95);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased;color:#0b1b2b;padding:36px 0}
+
+    .container{width:92%;max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;gap:18px}
+
+    /* Header */
+    header.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);box-shadow:0 10px 28px rgba(2,6,23,0.12)}
+    .brand h1{margin:0;color:#fff;font-size:1.1rem}
+    .brand p{margin:0;font-size:0.82rem;color:rgba(255,255,255,0.9)}
+
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .search{display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;min-width:320px;gap:8px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+    .search input{border:0;background:transparent;outline:none;font-size:0.95rem;width:220px;color:#0b1b2b}
+    .btn{background:linear-gradient(90deg,var(--accent-2),#4ea1ff);color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .link-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.95);padding:8px 12px;border-radius:10px}
+
+    /* Layout */
+    .layout{display:grid;grid-template-columns:320px 1fr 320px;gap:18px;align-items:start}
+    @media (max-width:1100px){ .layout{grid-template-columns:1fr} .aside-right{display:none} .search input{width:140px} }
+
+    /* left composer */
+    .panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 14px 36px rgba(2,6,23,0.12)}
+    .panel h2{margin:0 0 6px 0;font-size:1.05rem}
+    .panel p{margin:0 0 12px 0;color:var(--muted);font-size:0.92rem}
+
+    .field{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+    input[type="text"], textarea, select{padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:0.95rem}
+    textarea{min-height:120px;resize:vertical}
+    .cta-row{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+
+    /* main feed */
+    .feed-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 14px 36px rgba(2,6,23,0.12)}
+    .feed-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .feed-head .title{font-size:1.15rem;font-weight:700}
+    .toolbar{display:flex;gap:8px;align-items:center}
+    .chip{background:#f1f6ff;padding:6px 10px;border-radius:999px;border:1px solid rgba(11,18,32,0.04);font-size:0.88rem;color:var(--accent)}
+
+    .thread-list{display:flex;flex-direction:column;gap:12px}
+    .thread{display:flex;gap:12px;padding:12px;border-radius:10px;background:#f7f9fb;border:1px solid rgba(11,18,32,0.04)}
+    .avatar{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#eaf2ff,#d7e9ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
+    .thread-body{flex:1}
+    .thread-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+    .thread-title{font-weight:700;margin:0;color:#203040}
+    .meta{font-size:0.82rem;color:var(--muted)}
+    .thread-excerpt{margin:6px 0;color:var(--muted)}
+    .thread-footer{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .pill{background:#fff;padding:6px 10px;border-radius:999px;border:1px solid rgba(11,18,32,0.04);font-size:0.9rem}
+
+    /* right sidebar */
+    .aside-right{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 14px 36px rgba(2,6,23,0.12)}
+    .aside-right h3{margin:0 0 8px 0;font-size:1rem}
+    .trend{display:flex;flex-direction:column;gap:8px}
+    .trend-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:#f7f9fb;border:1px solid rgba(11,18,32,0.04)}
+    .small{font-size:0.86rem;color:var(--muted)}
+
+    footer{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.95);margin-top:14px;font-size:0.92rem}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header" role="banner">
+      <div class="brand">
+        <div class="logo">SG</div>
+        <div>
+          <h1>ScholarsGate</h1>
+          <p>Openforum — ask, discuss & collaborate</p>
+        </div>
+      </div>
+
+      <div class="header-actions" role="navigation">
+        <div class="search" aria-label="Search openforum (ui only)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#203040" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="6" stroke="#203040" stroke-width="2"/></svg>
+          <input placeholder="Search discussions..." disabled>
+        </div>
+        <button class="link-ghost" onclick="location.href='home.html'">Home</button>
+        <button class="btn" onclick="location.href='login.html'">Sign in</button>
+      </div>
+    </header>
+
+    <section class="layout" role="main">
+      <aside class="panel" aria-labelledby="compose-title">
+        <h2 id="compose-title">Start a discussion</h2>
+        <p class="small">Create a question or start a study group. (UI only)</p>
+
+        <div class="field">
+          <label class="small">Title</label>
+          <input type="text" placeholder="e.g. How to approach OS scheduling problems?" disabled>
+        </div>
+
+        <div class="field">
+          <label class="small">Category</label>
+          <select disabled>
+            <option>General</option>
+            <option>Study Group</option>
+            <option>Assignment Help</option>
+            <option>Project</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="small">Details</label>
+          <textarea placeholder="Write your question or topic..." disabled></textarea>
+        </div>
+
+        <div class="cta-row">
+          <button class="link-ghost" disabled>Clear</button>
+          <button class="btn" disabled>Post to Openforum</button>
+        </div>
+
+        <hr style="border:none;margin:14px 0 0 0;border-top:1px solid rgba(11,18,32,0.04)">
+
+        <div style="margin-top:12px">
+          <h3 style="margin:0 0 8px 0;font-size:0.95rem">Quick filters</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span class="pill">All</span>
+            <span class="pill">Unanswered</span>
+            <span class="pill">Pinned</span>
+            <span class="pill">Study Groups</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="feed-card" aria-labelledby="feed-title">
+        <div class="feed-head">
+          <div class="title" id="feed-title">Latest discussions</div>
+          <div class="toolbar" aria-hidden="true">
+            <span class="chip">All</span>
+            <span class="chip">Unanswered</span>
+            <select class="sort" disabled>
+              <option>Sort: Recent</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="thread-list" aria-live="polite">
+          <article class="thread">
+            <div class="avatar">AB</div>
+            <div class="thread-body">
+              <div class="thread-head">
+                <div>
+                  <div class="thread-title">How to approach OS scheduling problems?</div>
+                  <div class="meta">by Alice • 3 replies • 14 Oct 2025</div>
+                </div>
+                <div class="pill">Assignment Help</div>
+              </div>
+              <div class="thread-excerpt">I'm struggling with multi-level feedback queue examples — can someone show a solved sample?</div>
+              <div class="thread-footer">
+                <div class="small">Viewed 320 times</div>
+                <div class="small">Tags: <strong>os</strong>, <strong>scheduling</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="thread">
+            <div class="avatar">GR</div>
+            <div class="thread-body">
+              <div class="thread-head">
+                <div>
+                  <div class="thread-title">Weekend study group: Algorithms</div>
+                  <div class="meta">by GroupLead • 1 reply • 12 Oct 2025</div>
+                </div>
+                <div class="pill">Study Group</div>
+              </div>
+              <div class="thread-excerpt">Planning a 2-hour session on greedy & dynamic programming. Who's in?</div>
+              <div class="thread-footer">
+                <div class="small">Members: 18</div>
+                <div class="small">Tags: <strong>algorithms</strong>, <strong>study</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="thread">
+            <div class="avatar">PN</div>
+            <div class="thread-body">
+              <div class="thread-head">
+                <div>
+                  <div class="thread-title">Where to find past lab solutions?</div>
+                  <div class="meta">by Priya • 0 replies • 09 Oct 2025</div>
+                </div>
+                <div class="pill">General</div>
+              </div>
+              <div class="thread-excerpt">Looking for lab solution references for Computer Networks labs — any pointers?</div>
+              <div class="thread-footer">
+                <div class="small">Viewed 86 times</div>
+                <div class="small">Tags: <strong>labs</strong>, <strong>networks</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <div class="thread empty" aria-hidden="true" style="align-items:center;justify-content:center">
+            <div style="text-align:center;color:#203040">
+              <strong>No more threads</strong>
+              <div class="small" style="margin-top:6px;color:var(--muted)">Create a discussion from the left panel (UI only).</div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="aside-right">
+        <h3>Trending topics</h3>
+        <div class="trend">
+          <div class="trend-item"><div>e-Exams</div><div class="small">+24 mentions</div></div>
+          <div class="trend-item"><div>Distributed Systems</div><div class="small">+18 mentions</div></div>
+          <div class="trend-item"><div>Machine Learning</div><div class="small">+12 mentions</div></div>
+        </div>
+
+        <hr style="border:none;margin:12px 0;border-top:1px solid rgba(11,18,32,0.04)">
+
+        <h3 style="margin-top:8px">Moderation</h3>
+        <div class="small">Respectful collaboration only. Report inappropriate posts to admins.</div>
+      </aside>
+    </section>
+
+    <footer>
+      <div>&copy; 2025 ScholarsGate</div>
+      <div><a href="privacy.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Privacy</a> · <a href="terms.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Terms</a></div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ScholarsGate — E‑Repository (UI)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+    :root{
+      --bg-1:#0b4fd6;
+      --bg-2:#0d68ff;
+      --card:#ffffff;
+      --muted:#616f7f;
+      --accent:#1f3b5e;
+      --accent-2:#2b6be6;
+      --glass: rgba(255,255,255,0.95);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased;color:#0b1b2b;padding:36px 0}
+
+    .container{width:92%;max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;gap:20px}
+
+    /* Header */
+    header.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);box-shadow:0 10px 28px rgba(2,6,23,0.12)}
+    .brand h1{margin:0;color:#fff;font-size:1.1rem}
+    .brand p{margin:0;font-size:0.82rem;color:rgba(255,255,255,0.9)}
+
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .search{display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;min-width:320px;gap:8px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+    .search svg{opacity:.8}
+    .search input{border:0;background:transparent;outline:none;font-size:0.95rem;width:220px;color:#0b1b2b}
+    .btn{background:linear-gradient(90deg,var(--accent-2),#4ea1ff);color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .link-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.95);padding:8px 12px;border-radius:10px}
+
+    /* Page card */
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 16px 40px rgba(2,6,23,0.12);color:var(--text-dark)}
+    .page-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .page-head .title{font-size:1.25rem;font-weight:700}
+    .page-head .sub{color:var(--muted);font-size:0.95rem}
+
+    /* toolbar */
+    .toolbar{display:flex;gap:12px;align-items:center}
+    .filters{display:flex;gap:8px;align-items:center}
+    .chip{background:#f1f6ff;padding:6px 10px;border-radius:999px;border:1px solid rgba(11,18,32,0.04);font-size:0.88rem;color:var(--accent)}
+    .sort{padding:8px 10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);background:#fff}
+
+    /* resources grid */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:12px}
+    .resource{
+      background:#f7f9fb;padding:14px;border-radius:10px;border:1px solid rgba(11,18,32,0.04);
+      display:flex;flex-direction:column;gap:10px;transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .resource:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(2,6,23,0.10)}
+    .r-top{display:flex;gap:12px;align-items:center}
+    .r-icon{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eaf2ff,#d7e9ff);font-size:22px;color:var(--accent);border:1px solid rgba(11,18,32,0.04)}
+    .r-body{flex:1}
+    .r-title{margin:0;font-size:1rem;font-weight:700;color:#203040}
+    .r-desc{margin:0;color:var(--muted);font-size:0.92rem}
+    .r-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;color:var(--muted)}
+
+    .r-actions{display:flex;gap:8px;margin-top:8px}
+    .action{padding:8px 10px;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;text-align:center}
+    .action.view{background:linear-gradient(90deg,#ffffff,#f1f7ff);border:1px solid rgba(11,18,32,0.06);color:var(--accent-2)}
+    .action.dl{background:linear-gradient(90deg,var(--accent-2),#4ea1ff);color:#fff}
+
+    .empty{padding:26px;border-radius:10px;border:1px dashed rgba(11,18,32,0.06);text-align:center;color:var(--muted)}
+
+    footer{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.95);margin-top:14px;font-size:0.92rem}
+
+    @media (max-width:980px){ .search{min-width:220px} }
+    @media (max-width:720px){ .grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))} .search input{width:120px} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header" role="banner">
+      <div class="brand">
+        <div class="logo">SG</div>
+        <div>
+          <h1>ScholarsGate</h1>
+          <p>E‑Repository — curated academic resources</p>
+        </div>
+      </div>
+
+      <div class="header-actions" role="navigation">
+        <div class="search" aria-label="Search repository (UI only)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#203040" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="6" stroke="#203040" stroke-width="2"/></svg>
+          <input placeholder="Search papers, notes, videos..." disabled>
+        </div>
+        <button class="link-ghost" onclick="location.href='home.html'">Home</button>
+        <button class="btn" onclick="location.href='login.html'">Sign in</button>
+      </div>
+    </header>
+
+    <main class="card" role="main" aria-labelledby="repo-title">
+      <div class="page-head">
+        <div>
+          <div class="title" id="repo-title">E‑Repository</div>
+          <div class="sub">Browse lecture notes, past papers, slides and recorded sessions — UI mockup only.</div>
+        </div>
+
+        <div class="toolbar" aria-hidden="true">
+          <div class="filters" role="group" aria-label="Filters">
+            <span class="chip">All</span>
+            <span class="chip">Lecture Notes</span>
+            <span class="chip">Past Papers</span>
+            <span class="chip">Videos</span>
+          </div>
+          <select class="sort" aria-label="Sort by" disabled>
+            <option>Sort: Most recent</option>
+            <option>Most downloaded</option>
+            <option>Highest rated</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="grid" aria-live="polite">
+        <article class="resource">
+          <div class="r-top">
+            <div class="r-icon">📄</div>
+            <div class="r-body">
+              <h3 class="r-title">Operating Systems — Lecture Notes (Week 3)</h3>
+              <p class="r-desc">Comprehensive notes covering processes, threads and scheduling algorithms.</p>
+            </div>
+          </div>
+          <div class="r-meta">
+            <div>PDF • 1.2 MB</div>
+            <div>Uploaded: 14 Oct 2025</div>
+          </div>
+          <div class="r-actions">
+            <a href="#" class="action view">Preview</a>
+            <a href="#" class="action dl">Download</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <div class="r-top">
+            <div class="r-icon">🧾</div>
+            <div class="r-body">
+              <h3 class="r-title">Past Exam — Data Structures (2019)</h3>
+              <p class="r-desc">Full paper + answer outline. Use for timed practice.</p>
+            </div>
+          </div>
+          <div class="r-meta">
+            <div>PDF • 800 KB</div>
+            <div>Uploaded: 01 Sep 2025</div>
+          </div>
+          <div class="r-actions">
+            <a href="#" class="action view">Preview</a>
+            <a href="#" class="action dl">Download</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <div class="r-top">
+            <div class="r-icon">🎥</div>
+            <div class="r-body">
+              <h3 class="r-title">Recorded Lecture — Machine Learning Foundations</h3>
+              <p class="r-desc">1h 20m — Professor's walkthrough of basic ML concepts.</p>
+            </div>
+          </div>
+          <div class="r-meta">
+            <div>Video • 1.1 GB</div>
+            <div>Uploaded: 22 Aug 2025</div>
+          </div>
+          <div class="r-actions">
+            <a href="#" class="action view">Watch</a>
+            <a href="#" class="action dl">Download</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <div class="r-top">
+            <div class="r-icon">📊</div>
+            <div class="r-body">
+              <h3 class="r-title">Statistics — Practice Problems & Solutions</h3>
+              <p class="r-desc">Collection of solved exercises with step-by-step explanations.</p>
+            </div>
+          </div>
+          <div class="r-meta">
+            <div>PDF • 2.4 MB</div>
+            <div>Uploaded: 05 Jul 2025</div>
+          </div>
+          <div class="r-actions">
+            <a href="#" class="action view">Preview</a>
+            <a href="#" class="action dl">Download</a>
+          </div>
+        </article>
+
+        <!-- placeholder card -->
+        <div class="resource empty" aria-hidden="true">
+          <div style="text-align:center">
+            <strong style="display:block;color:#203040">More resources coming soon</strong>
+            <small style="color:var(--muted)">Upload and curate content from the admin dashboard.</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>&copy; 2025 ScholarsGate</div>
+      <div><a href="privacy.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Privacy</a> · <a href="terms.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Terms</a></div>
+    </footer>
+  </div>
+</body>
+</html>
