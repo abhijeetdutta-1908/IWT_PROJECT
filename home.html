@@ -1,323 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusSphere - Academic Resource Hub</title>
-    <style>
-        /* --- General Setup and Typography --- */
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-        /* --- Header/Navigation Bar --- */
-        .header {
-            background-color: #1f3b5e; /* Deep Blue */
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #f7d046; /* Accent Yellow */
-        }
-        
-        /* --- Search Bar --- */
-        .search-div {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 1rem;
-            width: 250px;
-            transition: width 0.3s ease;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-input:focus {
-            outline: none;
-            width: 300px;
-            box-shadow: 0 0 0 2px rgba(247, 208, 70, 0.5);
-        }
-
-        /* --- Hero Section (Image and Text) --- */
-        .hero-section {
-            background-color: #ffffff;
-            padding: 50px 0;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero-text-div {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 20px;
-        }
-
-        .hero-text-div h2 {
-            font-size: 2.5rem;
-            color: #1f3b5e;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .hero-text-div p {
-            font-size: 1.15rem;
-            color: #555;
-        }
-
-        .hero-img-div {
-            flex: 1;
-            min-width: 300px;
-            text-align: right;
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 450px;
-            height: auto;
-            border-radius: 15px;
-            object-fit: cover;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* --- Services Section --- */
-        .services-section {
-            padding: 20px 0 60px 0;
-        }
-
-        .services-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #1f3b5e;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .services-section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #f7d046;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        .services-list-div {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .service-item {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-item a {
-            text-decoration: none;
-            color: #1f3b5e;
-            font-size: 1.3rem;
-            font-weight: 600;
-            display: block;
-            margin-top: 15px;
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            color: #f7d046;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            background-color: #1f3b5e;
-            color: #a0aec0;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            margin-top: 40px;
-        }
-
-        /* --- Responsiveness --- */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-
-            .search-input {
-                width: 100%;
-            }
-            
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text-div {
-                padding-right: 0;
-            }
-
-            .hero-img-div {
-                order: -1; /* Move image to the top on mobile */
-            }
-
-            .hero-text-div h2 {
-                font-size: 2rem;
-            }
-            
-            .services-list-div {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Sphere - Simplified</title>
+    <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-
-    <!-- Header and Navigation -->
-    <div class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>CampusSphere</h1>
-            </div>
-            
-            <div class="search-div">
-                <input type="text" placeholder="Search resources, topics..." class="search-input">
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <div class="hero-section">
-        <div class="container hero-content">
-            
-            <!-- Picture Div -->
-            <div class="hero-img-div">
-                <img 
-                    src="https://placehold.co/600x400/1f3b5e/ffffff?text=Academic+Success" 
-                    alt="Students collaborating on academic resources" 
-                    class="hero-image"
-                >
-            </div>
-            
-            <!-- Paragraph Div -->
-            <div class="hero-text-div">
-                <h2>Your Gateway to Academic Excellence</h2>
-                <p>
-                    CampusSphere is the centralized hub designed to empower students and faculty through integrated digital learning tools and a vibrant community platform. We connect you with essential resources, collaborative spaces, and the infrastructure needed to succeed in modern education. From testing your knowledge with e-Exams to collaborating on research in the Openforum, your academic journey starts here.
-                </p>
-            </div>
-            
-        </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="services-section">
-        <div class="container">
-            <h2>Our Core Services</h2>
-            
-            <!-- List Div -->
-            <div class="services-list-div">
-                
-                <!-- Service 1: e-Exam -->
-                <div class="service-item">
-                    <span class="service-icon">📝</span>
-                    <a href="e-exam.html">e-Exam</a>
-                    <div class="p">
-                        <p>Simulate official tests, track your progress, and identify areas for improvement with our digital examination module.</p>
-                    </div>
+    <div class="container">
+        <header class="app-header">
+            <div class="brand">
+                <div class="logo-badge">CS</div>
+                <div>
+                    <h1>Campus Sphere</h1>
+                    <p>Academic Resource Hub</p>
                 </div>
-
-                <!-- Service 2: Openforum -->
-                <div class="service-item">
-                    <span class="service-icon">💬</span>
-                    <a href="openforum.html">Openforum</a>
-                    <div class="p">
-                        <p>Engage in collaborative discussions, ask questions, and share insights with peers and professors in a dedicated space.</p>
-                    </div>
-                </div>
-
-                <!-- Service 3: e-Repository -->
-                <div class="service-item">
-                    <span class="service-icon">📚</span>
-                    <a href="e-repository.html">e-Repository</a>
-                    <div class="p">
-                        <p>Access a vast collection of verified lecture notes, research papers, and educational materials 24/7.</p>
-                    </div>
-                </div>
-
-                <!-- Service 4: MyWall -->
-                <div class="service-item">
-                    <span class="service-icon">📌</span>
-                    <a href="mywall.html">MyWall</a>
-                    <div class="p">
-                        <p>A personalized dashboard for organizing your tasks, academic goals, and recent activity across all Scholargate services.</p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </div>
+            <div class="header-actions">
+                <div class="search">
+                    <input type="text" placeholder="Search resources..." />
+                </div>
+                <a href="login.html" class="btn">Sign in</a>
+            </div>
+        </header>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 ScholarsGate. All rights reserved. | Empowering Academic Communities.</p>
-    </div>
+        <section class="hero">
+            <div class="hero-left">
+                <p class="hero-eyebrow">Trusted by students & educators</p>
+                <h2 class="hero-title">Your gateway to academic excellence</h2>
+                <p class="hero-sub">Tools, community, and content in one place. Succeed with our e-Exams, Openforum, e-Repository, and MyWall.</p>
+                <div class="hero-cta">
+                    <a href="e-exam.html" class="btn">Try an e-Exam</a>
+                    <a href="openforum.html" class="btn secondary">Explore Openforum</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img class="hero-image" alt="Students collaborating" src="https://plus.unsplash.com/premium_photo-1681488165136-eeecfb177145?auto=format&fit=crop&q=80&w=1074" />
+            </div>
+        </section>
 
+        <section class="services">
+            <div class="service-card">
+                <div class="svc-icon">📝</div>
+                <h3>e-Exam</h3>
+                <p>Simulate official tests with timed sections and progress tracking.</p>
+                <a href="e-exam.html" class="card-link">Open e-Exam →</a>
+            </div>
+            <div class="service-card">
+                <div class="svc-icon">💬</div>
+                <h3>Openforum</h3>
+                <p>Ask questions, run study groups, and collaborate with peers.</p>
+                <a href="openforum.html" class="card-link">Visit Openforum →</a>
+            </div>
+            <div class="service-card">
+                <div class="svc-icon">📚</div>
+                <h3>e-Repository</h3>
+                <p>Access verified lecture notes, research, and past papers.</p>
+                <a href="e-Repository.html" class="card-link">Browse Repository →</a>
+            </div>
+            <div class="service-card">
+                <div class="svc-icon">📌</div>
+                <h3>MyWall</h3>
+                <p>Organize your tasks, deadlines, and recent activity.</p>
+                <a href="My_Wall_page.html" class="card-link">Open MyWall →</a>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <p>&copy; 2025 Campus Sphere. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">Privacy</a> &middot;
+                <a href="terms.html">Terms</a>
+            </p>
+        </footer>
+    </div>
 </body>
 </html>
-

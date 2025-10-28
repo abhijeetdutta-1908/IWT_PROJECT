@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Sphere — E‑Repository (with Upload)</title>
+    <link rel="stylesheet" href="e-Repo.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <div class="brand">
+          <div class="logo">SG</div>
+          <div>
+            <h1>Campus Sphere</h1>
+            <p>E‑Repository — curated academic resources</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <div class="search">
+            <input placeholder="Search papers, notes..." />
+          </div>
+          <a href="home.html" class="button">Home</a>
+          <a href="login.html" class="button">Sign in</a>
+        </div>
+      </header>
+
+      <main class="card">
+        <div class="page-header">
+          <div>
+            <h2>E‑Repository</h2>
+            <p class="muted-text">
+              Browse lecture notes, past papers, and recorded sessions.
+            </p>
+          </div>
+          <div class="toolbar">
+            <span class="chip">All</span>
+            <span class="chip">Notes</span>
+            <span class="chip">Papers</span>
+          </div>
+        </div>
+
+        <section class="upload-section">
+          <h3>Upload a New Resource</h3>
+          <form class="upload-form">
+            <div class="form-group">
+              <label for="ownerName">Owner's Name</label>
+              <input
+                type="text"
+                id="ownerName"
+                placeholder="e.g., Abhijeet Dutta"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="fileUpload">Select File</label>
+              <input type="file" id="fileUpload" class="file-input" required />
+              <label for="fileUpload" class="file-label">Choose File...</label>
+            </div>
+            <button type="submit" class="button">Upload File</button>
+          </form>
+        </section>
+
+        <section class="resource-grid">
+          <article class="resource-card">
+            <div class="resource-header">
+              <div class="icon">📄</div>
+              <div>
+                <h3>Operating Systems — Lecture Notes</h3>
+                <p class="muted-text">
+                  Covers processes, threads, and scheduling.
+                </p>
+              </div>
+            </div>
+            <div class="resource-meta">
+              <span>By: Priya Sharma</span>
+              <span>14 Oct 2025</span>
+            </div>
+            <div class="resource-actions">
+              <a href="#" class="button ghost">Preview</a>
+              <a href="#" class="button">Download</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-header">
+              <div class="icon">🧾</div>
+              <div>
+                <h3>Past Exam — Data Structures</h3>
+                <p class="muted-text">
+                  Full paper from 2019 with an answer outline.
+                </p>
+              </div>
+            </div>
+            <div class="resource-meta">
+              <span>By: Rohan Verma</span>
+              <span>01 Sep 2025</span>
+            </div>
+            <div class="resource-actions">
+              <a href="#" class="button ghost">Preview</a>
+              <a href="#" class="button">Download</a>
+            </div>
+          </article>
+
+          <article class="resource-card">
+            <div class="resource-header">
+              <div class="icon">🎥</div>
+              <div>
+                <h3>Recorded Lecture — ML Foundations</h3>
+                <p class="muted-text">
+                  Professor's walkthrough of basic ML concepts.
+                </p>
+              </div>
+            </div>
+            <div class="resource-meta">
+              <span>By: Dr. A. Mishra</span>
+              <span>22 Aug 2025</span>
+            </div>
+            <div class="resource-actions">
+              <a href="#" class="button ghost">Watch</a>
+              <a href="#" class="button">Download</a>
+            </div>
+          </article>
+
+          <div class="resource-card placeholder">
+            <strong>More coming soon</strong>
+            <p class="muted-text">New resources are added weekly.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; 2025 Campus Sphere</p>
+        <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

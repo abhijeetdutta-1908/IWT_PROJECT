@@ -1,190 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ScholarsGate — E‑Wall (UI)</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-    :root{
-      --bg-1:#0b4fd6;
-      --bg-2:#0d68ff;
-      --card:#ffffff;
-      --muted:#616f7f;
-      --accent:#1f3b5e;
-      --accent-2:#2b6be6;
-      --glass: rgba(255,255,255,0.9);
-      --max:1200px;
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));-webkit-font-smoothing:antialiased;color:#0b1b2b;padding:36px 0}
-
-    .container{width:90%;max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;gap:20px}
-
-    /* Header */
-    header.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:10px;background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);box-shadow:0 10px 28px rgba(2,6,23,0.12)}
-    .brand h1{margin:0;color:#fff;font-size:1.1rem}
-    .brand p{margin:0;font-size:0.82rem;color:rgba(255,255,255,0.9)}
-
-    .header-actions{display:flex;align-items:center;gap:10px}
-    .search{display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;min-width:240px;gap:8px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
-    .search svg{opacity:.8}
-    .search input{border:0;background:transparent;outline:none;font-size:0.95rem;width:160px;color:#0b1b2b}
-
-    .btn{background:linear-gradient(90deg,var(--accent-2),#4ea1ff);color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
-    .link-ghost{background:transparent;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.95);padding:8px 12px;border-radius:10px}
-
-    /* Main layout */
-    .layout{display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
-    @media (max-width:940px){ .layout{grid-template-columns:1fr} .search input{width:100px} }
-
-    /* Left panel - create note / filters */
-    .panel{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 16px 40px rgba(2,6,23,0.12)}
-    .panel h2{margin:0 0 6px 0;font-size:1.1rem}
-    .panel p{margin:0 0 12px 0;color:var(--muted);font-size:0.95rem}
-
-    .field{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
-    .field label{font-size:0.83rem;color:var(--muted)}
-    .input, textarea, select{padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:0.95rem}
-    textarea{min-height:120px;resize:none}
-
-    .mini-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
-
-    /* Right panel - wall feed */
-    .card-white{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 16px 40px rgba(2,6,23,0.10)}
-    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .topbar .title{font-size:1.15rem;font-weight:700}
-    .topbar .filters{display:flex;gap:8px;align-items:center}
-    .chip{background:#f1f6ff;padding:6px 10px;border-radius:999px;border:1px solid rgba(11,18,32,0.04);font-size:0.88rem;color:var(--accent)}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-    .post{background:#f7f9fb;padding:12px;border-radius:10px;border:1px solid rgba(11,18,32,0.04)}
-    .post .meta{display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;color:var(--muted);margin-bottom:8px}
-    .post h3{margin:0 0 8px 0;font-size:1rem}
-    .post p{margin:0 0 10px 0;color:var(--muted);font-size:0.95rem}
-
-    /* empty / placeholder */
-    .empty{padding:28px;border-radius:10px;border:1px dashed rgba(255,255,255,0.12);text-align:center;color:rgba(255,255,255,0.9);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
-
-    footer{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,0.95);margin-top:14px;font-size:0.92rem}
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Sphere — MyWall (UI)</title>
+    <link rel="stylesheet" href="wallpage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <header class="header" role="banner">
-      <div class="brand">
-        <div class="logo">SG</div>
-        <div>
-          <h1>ScholarsGate</h1>
-          <p>E‑Wall — quick notes & pins</p>
-        </div>
-      </div>
+    <div class="container">
+        <header class="app-header">
+            <div class="brand">
+                <div class="logo">SG</div>
+                <div>
+                    <h1>Campus Sphere</h1>
+                    <p>MyWall — quick notes & pins</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="home.html" class="button ghost">Home</a>
+                <a href="login.html" class="button">Sign in</a>
+            </div>
+        </header>
 
-      <div class="header-actions" role="navigation">
-        <div class="search" aria-label="Search wall (ui only)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#203040" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="6" stroke="#203040" stroke-width="2"/></svg>
-          <input placeholder="Search your wall (UI only)" disabled>
-        </div>
-        <button class="link-ghost" onclick="location.href='home.html'">Home</button>
-        <button class="btn" onclick="location.href='login.html'">Sign in</button>
-      </div>
-    </header>
+        <section class="layout">
+            <aside class="card">
+                <h2>Create a pin</h2>
+                <p class="muted-text">Compose a quick note, link, or reminder.</p>
+                <div class="form-field">
+                    <label>Title</label>
+                    <input type="text" placeholder="e.g. Read Chapter 5">
+                </div>
+                <div class="form-field">
+                    <label>Content</label>
+                    <textarea placeholder="Write a short note..."></textarea>
+                </div>
+                <div class="button-row">
+                    <a href="#" class="button ghost-dark">Clear</a>
+                    <a href="#" class="button">Add to Wall</a>
+                </div>
+            </aside>
 
-    <section class="layout" role="main">
-      <!-- left panel (UI only) -->
-      <aside class="panel" aria-labelledby="create-title">
-        <h2 id="create-title">Create a pin</h2>
-        <p>Use this panel to compose a quick note, link or reminder. (UI mockup only)</p>
+            <main class="card">
+                <div class="feed-header">
+                    <h2>My E‑Wall</h2>
+                    <span class="chip">Updated: Today</span>
+                </div>
+                <div class="post-grid">
+                    <article class="post-card">
+                        <div class="post-meta">
+                            <span>Note</span>
+                            <span>12 Oct 2025</span>
+                        </div>
+                        <h3>Read: Distributed Systems — Ch. 2</h3>
+                        <p>Prepare notes for the lecture. Focus on consensus algorithms.</p>
+                    </article>
+                    <article class="post-card">
+                        <div class="post-meta">
+                            <span>To‑Do</span>
+                            <span>10 Oct 2025</span>
+                        </div>
+                        <h3>Submit e-Exam practice</h3>
+                        <p>Complete the mock exam and review incorrect answers.</p>
+                    </article>
+                    <article class="post-card">
+                        <div class="post-meta">
+                            <span>Link</span>
+                            <span>8 Oct 2025</span>
+                        </div>
+                        <h3>Useful: Research paper on ML</h3>
+                        <p>https://example.com/paper — save for reference.</p>
+                    </article>
+                    <article class="post-card placeholder">
+                        <strong>No more items</strong>
+                        <p class="muted-text">Add new pins from the left panel.</p>
+                    </article>
+                </div>
+            </main>
+        </section>
 
-        <div class="field">
-          <label>Title</label>
-          <input class="input" type="text" placeholder="e.g. Read Chapter 5" disabled>
-        </div>
-
-        <div class="field">
-          <label>Type</label>
-          <select disabled>
-            <option>Note</option>
-            <option>To‑Do</option>
-            <option>Link</option>
-            <option>Idea</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Content</label>
-          <textarea placeholder="Write a short note..." disabled></textarea>
-        </div>
-
-        <div class="mini-actions">
-          <button class="link-ghost" disabled>Clear</button>
-          <button class="btn" disabled>Add to E‑Wall</button>
-        </div>
-
-        <hr style="border:none;margin:14px 0 0 0;border-top:1px solid rgba(11,18,32,0.04)">
-
-        <div style="margin-top:12px">
-          <h3 style="margin:0 0 8px 0;font-size:0.95rem">Saved filters</h3>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <span class="chip">All</span>
-            <span class="chip">Notes</span>
-            <span class="chip">To‑Dos</span>
-            <span class="chip">Links</span>
-          </div>
-        </div>
-      </aside>
-
-      <section class="card-white">
-        <div class="topbar">
-          <div class="title">My E‑Wall</div>
-          <div class="filters">
-            <span class="chip">Pinned</span>
-            <span style="font-size:0.9rem;color:var(--muted)">Updated: Today</span>
-          </div>
-        </div>
-
-        <!-- grid of static posts (UI only) -->
-        <div class="grid" aria-live="polite">
-          <article class="post">
-            <div class="meta"><span>Note</span><span>12 Oct 2025</span></div>
-            <h3>Read: Distributed Systems — Chapter 2</h3>
-            <p>Prepare notes for the lecture. Focus on consensus algorithms and examples.</p>
-          </article>
-
-          <article class="post">
-            <div class="meta"><span>To‑Do</span><span>10 Oct 2025</span></div>
-            <h3>Submit e-Exam practice</h3>
-            <p>Complete the mock exam and review incorrect answers.</p>
-          </article>
-
-          <article class="post">
-            <div class="meta"><span>Link</span><span>8 Oct 2025</span></div>
-            <h3>Useful: Research paper on ML fairness</h3>
-            <p>https://example.com/paper — save for reference.</p>
-          </article>
-
-          <article class="post">
-            <div class="meta"><span>Idea</span><span>2 Oct 2025</span></div>
-            <h3>Study group: Algorithms</h3>
-            <p>Organize a weekend session for problem solving.</p>
-          </article>
-
-          <div class="post empty" aria-hidden="true">
-            <strong style="display:block;color:#203040">No more items</strong>
-            <small style="color:var(--muted)">Add new pins from the left panel.</small>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <footer>
-      <div>&copy; 2025 ScholarsGate</div>
-      <div><a href="privacy.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Privacy</a> · <a href="terms.html" style="color:rgba(255,255,255,0.95);text-decoration:none">Terms</a></div>
-    </footer>
-  </div>
+        <footer class="app-footer">
+            <p>&copy; 2025 Campus Sphere</p>
+            <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    </div>
 </body>
 </html>
