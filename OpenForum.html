@@ -1,108 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campus Sphere — Openforum (Simplified)</title>
-    <link rel="stylesheet" href="OpenForum.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Forum</title>
+    <link rel="stylesheet" href="OpenForum.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="app-header">
-            <div class="brand">
-                <div class="logo">SG</div>
-                <div>
-                    <h1>Campus Sphere</h1>
-                    <p>Openforum — ask, discuss & collaborate</p>
-                </div>
-            </div>
-            <div class="header-actions">
-                <div class="search">
-                    <input placeholder="Search discussions..." />
-                </div>
-                <a href="home.html" class="button-ghost">Home</a>
-                <a href="login.html" class="button">Sign in</a>
-            </div>
-        </header>
 
-        <section class="layout">
-            <aside class="card">
-                <h2>Start a discussion</h2>
-                <p class="muted-text">Create a question or start a study group.</p>
-                <div class="form-field">
-                    <label>Title</label>
-                    <input type="text" placeholder="e.g. How to use Flexbox?" />
-                </div>
-                <div class="form-field">
-                    <label>Category</label>
-                    <select><option>General</option></select>
-                </div>
-                <div class="form-field">
-                    <label>Details</label>
-                    <textarea placeholder="Write your question..."></textarea>
-                </div>
-                <div class="button-row">
-                    <a href="#" class="button-ghost">Clear</a>
-                    <a href="#" class="button">Post to Forum</a>
-                </div>
-                <hr class="divider" />
-                <h3>Quick filters</h3>
-                <div class="pills-container">
-                    <span class="pill">All</span>
-                    <span class="pill">Unanswered</span>
-                    <span class="pill">Pinned</span>
-                </div>
-            </aside>
+    <header class="forum-header">
+        <div class="header-content">
+            <h1>Open Forum</h1>
+            <p>Collaborate with peers and faculty, ask questions, and run study groups.</p>
+        </div>
+    </header>
 
-            <main class="card">
-                <div class="feed-header">
-                    <h2>Latest discussions</h2>
-                    <div class="toolbar">
-                        <span class="chip">Sort: Recent</span>
+    <div class="forum-container">
+        <main class="main-content">
+            <div class="ask-question-card">
+                <h3>Have a question?</h3>
+                <form>
+                    <input type="text" placeholder="Enter a title for your question..." class="question-title-input">
+                    <textarea placeholder="Describe your question in detail..."></textarea>
+                    <button type="submit" class="btn btn-primary">Post Question</button>
+                </form>
+            </div>
+
+            <div class="discussions-feed">
+                <h2>Discussions</h2>
+
+                <div class="post-card">
+                    <div class="post-votes">
+                        <span class="material-icons">arrow_upward</span>
+                        <span>28</span>
+                        <span class="material-icons">arrow_downward</span>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">How does the CSS Box Model really work?</h4>
+                        <p class="post-meta">Asked by <a href="#">Priya Sharma</a> 2 hours ago</p>
+                        <div class="post-tags">
+                            <span class="tag">css</span>
+                            <span class="tag">web-dev</span>
+                        </div>
+                        <div class="post-actions">
+                            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span> Like (12)</a>
+                            <a href="#" class="action-btn"><span class="material-icons">chat_bubble_outline</span> Comment (8)</a>
+                        </div>
                     </div>
                 </div>
-                <div class="thread-list">
-                    <article class="thread">
-                        <div class="avatar">AD</div>
-                        <div class="thread-body">
-                            <h4>How to approach OS scheduling problems?</h4>
-                            <p class="meta">by Abhijeet • 3 replies • 28 Oct 2025</p>
-                            <p class="muted-text">I'm struggling with multi-level feedback queue examples...</p>
-                        </div>
-                    </article>
-                    <article class="thread">
-                        <div class="avatar">SG</div>
-                        <div class="thread-body">
-                            <h4>Weekend study group: Algorithms</h4>
-                            <p class="meta">by StudyGroup • 1 reply • 26 Oct 2025</p>
-                            <p class="muted-text">Planning a session on greedy & dynamic programming.</p>
-                        </div>
-                    </article>
-                    <article class="thread">
-                        <div class="avatar">PN</div>
-                        <div class="thread-body">
-                            <h4>Where to find past lab solutions?</h4>
-                            <p class="meta">by Priya • 0 replies • 24 Oct 2025</p>
-                            <p class="muted-text">Looking for Computer Networks lab solution references.</p>
-                        </div>
-                    </article>
-                </div>
-            </main>
 
-            <aside class="card">
-                <h3>Trending topics</h3>
-                <div class="trend-list">
-                    <div class="trend-item"><span>e-Exams</span> <span class="muted-text">+24</span></div>
-                    <div class="trend-item"><span>Distributed Systems</span> <span class="muted-text">+18</span></div>
-                    <div class="trend-item"><span>Machine Learning</span> <span class="muted-text">+12</span></div>
+                <div class="post-card">
+                    <div class="post-votes">
+                        <span class="material-icons">arrow_upward</span>
+                        <span>15</span>
+                        <span class="material-icons">arrow_downward</span>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Best resources to prepare for Data Structures exam?</h4>
+                        <p class="post-meta">Asked by <a href="#">Rohan Verma</a> 1 day ago</p>
+                        <div class="post-tags">
+                            <span class="tag">data-structures</span>
+                            <span class="tag">exams</span>
+                        </div>
+                        <div class="post-actions">
+                            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span> Like (5)</a>
+                            <a href="#" class="action-btn"><span class="material-icons">chat_bubble_outline</span> Comment (3)</a>
+                        </div>
+                    </div>
                 </div>
-            </aside>
-        </section>
 
-        <footer class="app-footer">
-            <p>&copy; 2025 Campus Sphere</p>
-            <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+                 <div class="post-card">
+                    <div class="post-votes">
+                        <span class="material-icons">arrow_upward</span>
+                        <span>42</span>
+                        <span class="material-icons">arrow_downward</span>
+                    </div>
+                    <div class="post-content">
+                        <h4 class="post-title">Understanding Python list comprehensions.</h4>
+                        <p class="post-meta">Asked by <a href="#">Anjali Singh</a> 5 hours ago</p>
+                        <div class="post-tags">
+                            <span class="tag">python</span>
+                            <span class="tag">programming</span>
+                        </div>
+                        <div class="post-actions">
+                             <a href="#" class="action-btn"><span class="material-icons">thumb_up</span> Like (25)</a>
+                            <a href="#" class="action-btn"><span class="material-icons">chat_bubble_outline</span> Comment (12)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Study Groups</h3>
+                <ul class="widget-list">
+                    <li><a href="#">DSA Final Prep Group</a></li>
+                    <li><a href="#">Web Tech Project Collab</a></li>
+                    <li><a href="#">Java Beginners</a></li>
+                </ul>
+                <button class="btn btn-secondary">Create New Group</button>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Connect with Faculty</h3>
+                <ul class="widget-list faculty-list">
+                    <li>
+                        <!-- <img src="https://via.placeholder.com/40" alt="Faculty Photo"> -->
+                        <a href="#">Bivasa Ranjan (CSE)</a>
+                    </li>
+                    <li>
+                        <!-- <img src="https://via.placeholder.com/40" alt="Faculty Photo"> -->
+                        <a href="#">Prof. Sarthak Padhi (ECE)</a>
+                    </li>
+                    <li>
+                        <!-- <img src="https://via.placeholder.com/40" alt="Faculty Photo"> -->
+                        <a href="#">Dr. Samleswari Prasad Nayak (CSE)</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
     </div>
+
 </body>
 </html>
