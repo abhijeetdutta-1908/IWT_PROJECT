@@ -98,3 +98,22 @@ button {
 button:hover {
     opacity: 0.9;
 }
+.login-link {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-link p {
+    color: #555;
+}
+
+.login-link a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
