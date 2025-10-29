@@ -163,3 +163,31 @@ body {
 .color-box.not-answered { background-color: #e74c3c; }
 .color-box.not-visited { background-color: #ecf0f1; }
 .color-box.current { background-color: #3498db; }
+
+/* Unified footer styles */
+.site-footer {
+    margin: 24px auto;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+}
+.site-footer .footer-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.site-footer .footer-nav a {
+    color: #007bff;
+    text-decoration: none;
+}
+.site-footer .footer-nav a:hover {
+    text-decoration: underline;
+}
+.site-footer .footer-copy {
+    margin: 0;
+    font-size: 0.92rem;
+}

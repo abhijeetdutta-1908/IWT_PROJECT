@@ -1,4 +1,3 @@
-/* --- Basic Setup --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
@@ -6,7 +5,6 @@ body {
     color: #333;
 }
 
-/* --- Header --- */
 .forum-header {
     background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
     color: white;
@@ -24,7 +22,6 @@ body {
     opacity: 0.9;
 }
 
-/* --- Main Layout Container --- */
 .forum-container {
     display: flex;
     max-width: 1200px;
@@ -40,8 +37,6 @@ body {
 .sidebar {
     flex: 1;
 }
-
-/* --- Card & Button Styling --- */
 .ask-question-card, .post-card, .sidebar-widget {
     background-color: #fff;
     border-radius: 8px;
@@ -75,7 +70,6 @@ body {
     background-color: #5a6268;
 }
 
-/* --- Ask Question Form --- */
 .ask-question-card h3 {
     margin-top: 0;
 }
@@ -94,7 +88,6 @@ body {
     min-height: 80px;
 }
 
-/* --- Discussion Feed --- */
 .discussions-feed h2 {
     margin-bottom: 15px;
 }
@@ -142,7 +135,6 @@ body {
     margin-right: 5px;
 }
 
-/* ADDED: Like and Comment Button Styles */
 .post-actions {
     display: flex;
     gap: 20px;
@@ -154,7 +146,7 @@ body {
 .action-btn {
     display: flex;
     align-items: center;
-    gap: 6px; /* Space between icon and text */
+    gap: 6px; 
     text-decoration: none;
     color: #6c757d;
     font-size: 0.9em;
@@ -163,14 +155,13 @@ body {
 }
 
 .action-btn:hover {
-    color: #007bff; /* Highlight on hover */
+    color: #007bff;
 }
 
 .action-btn .material-icons {
-    font-size: 18px; /* Adjust icon size */
+    font-size: 18px; 
 }
 
-/* --- Sidebar Widgets --- */
 .sidebar-widget h3 {
     margin-top: 0;
     border-bottom: 2px solid #eee;
@@ -200,4 +191,32 @@ body {
 }
 .faculty-list img {
     border-radius: 50%;
+}
+
+/* Unified footer styles */
+.site-footer {
+    margin: 24px auto;
+    padding: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+}
+.site-footer .footer-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.site-footer .footer-nav a {
+    color: #007bff;
+    text-decoration: none;
+}
+.site-footer .footer-nav a:hover {
+    text-decoration: underline;
+}
+.site-footer .footer-copy {
+    margin: 0;
+    font-size: 0.92rem;
 }

@@ -9,7 +9,6 @@ body {
     margin: 0;
 }
 
-/* Registration Form Container */
 .registration-container {
     background-color: white;
     padding: 30px 40px;
@@ -19,14 +18,12 @@ body {
     max-width: 600px;
 }
 
-/* Form Title (ID Selector Example) */
 #form-title {
     text-align: center;
     margin-bottom: 25px;
     color: #333;
 }
 
-/* Input Fields and Labels (Class Selector Example) */
 .input-group {
     margin-bottom: 15px;
 }
@@ -38,7 +35,6 @@ body {
     font-weight: 600;
 }
 
-/* General Input Styling (Element Selector Example) */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -59,7 +55,6 @@ input:focus, textarea:focus, select:focus {
     border-color: #6a11cb;
 }
 
-/* Radio and Checkbox Group Styling */
 .radio-group, .checkbox-group {
     display: flex;
     gap: 20px;
@@ -75,7 +70,6 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 0;
 }
 
-/* Button Group Styling */
 .button-group {
     display: flex;
     gap: 15px;
@@ -117,3 +111,4 @@ button:hover {
 .login-link a:hover {
     text-decoration: underline;
 }
+
